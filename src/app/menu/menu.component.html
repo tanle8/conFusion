@@ -12,7 +12,11 @@
   <div fxFlex>
     <mat-grid-list cols="2" rowHeight="200px">
       <!-- Grid Tiles -->
-      <mat-grid-tile *ngFor="let dish of dishes">
+      <!-- It also defined a click event here. When user clicks on the the grid tile, -->
+      <!-- the click event will call on "onSelect" method that will be defined inside -->
+      <!-- menu.component.ts file. The dish parameter (which is passed in the "onSelect()" method) -->
+      <!-- is exactly the dish is currently selected in this "ngFor" syntax here. -->
+      <mat-grid-tile *ngFor="let dish of dishes" (click)="onSelect(dish)">
         <!-- Grid Tile Image -->
         <img height="200px" src={{dish.image}} alt={{dish.name}}>
         <!-- Grid Tile Footer -->
@@ -23,4 +27,6 @@
     </mat-grid-list>
   </div>
 
+  <!-- Adding the dishdetail component template to the menu component template -->
+  <app-dishdetail [dish]="selectedDish"></app-dishdetail>
 </div>

@@ -13,11 +13,16 @@ export class MenuComponent implements OnInit {
   // but in practice it is prefered to write in the below style for readability.
   dishes: Dish[] = DISHES
   
-  selectedDish: Dish = DISHES[0];
+  selectedDish: Dish;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  // Implement "onSelect()" method here. 
+  onSelect(dish: Dish){
+    this.selectedDish = dish;
+  }
+  
 }

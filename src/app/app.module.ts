@@ -13,6 +13,7 @@ import { AppRoutingModule } from "./app-routing/app-routing.module";
 
 import 'hammerjs';
 
+// Components
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { DishdetailComponent } from './dishdetail/dishdetail.component';
@@ -24,8 +25,6 @@ import { ContactComponent } from './contact/contact.component';
 
 // Services
 import { DishService } from "./services/dish.service";
-
-
 
 @NgModule({
   declarations: [

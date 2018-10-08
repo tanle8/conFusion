@@ -7,6 +7,7 @@ import { DISHES } from "../shared/dishes"; // To access to the const varaible DI
 })
 export class DishService {
 
+  // Create a function in dish service
   getDishes(): Dish[] {
     return DISHES;
   }

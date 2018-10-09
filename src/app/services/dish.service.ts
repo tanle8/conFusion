@@ -8,8 +8,12 @@ import { DISHES } from "../shared/dishes"; // To access to the const varaible DI
 export class DishService {
 
   // Create a function in dish service
-  getDishes(): Dish[] {
-    return DISHES;
+  getDish(id: number): Dish {
+    return DISHES.filter((dish) => (dish.id === id))[0];
+  }
+
+  getFeaturedDish(): Dish {
+    return DISHES.filter((dish) => dish.featured)[0];
   }
 
   constructor() { }

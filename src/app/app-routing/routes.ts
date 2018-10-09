@@ -15,7 +15,7 @@ export const routes: Routes = [
     {path: 'home', component: HomeComponent},
     {path: 'menu', component: MenuComponent},
     {path: 'about', component: AboutComponent},
-    {path: 'contact', component: ContactComponent},
+    {path: 'contactus', component: ContactComponent},
     // Default route (location) when user navigates to the site without providing
     // specific path, e.g. www.abc.org/. We redirect user to our desired location
     {path: '', redirectTo: '/home', pathMatch: 'full'}

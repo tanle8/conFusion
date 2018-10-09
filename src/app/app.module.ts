@@ -25,8 +25,10 @@ import { ContactComponent } from './contact/contact.component';
 
 // Services
 import { DishService } from "./services/dish.service";
+import { PromotionService } from "./services/promotion.service";
 
 @NgModule({
+  // declare component here
   declarations: [
     AppComponent,
     MenuComponent,
@@ -37,6 +39,7 @@ import { DishService } from "./services/dish.service";
     HomeComponent,
     ContactComponent
   ],
+  // declare module here
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -48,9 +51,13 @@ import { DishService } from "./services/dish.service";
     MatButtonModule,
     AppRoutingModule
   ],
+  // add service here
   providers: [
-    DishService
+    DishService,
+    PromotionService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

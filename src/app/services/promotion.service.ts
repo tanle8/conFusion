@@ -5,7 +5,10 @@ import { PROMOTIONS } from "../shared/promotions";
 @Injectable({
   providedIn: 'root'
 })
+
 export class PromotionService {
+
+  constructor() { }
 
   getPromotions(): Promotion[] {
     return PROMOTIONS;
@@ -18,5 +21,4 @@ export class PromotionService {
   getFeaturedPromotion(): Promotion {
     return PROMOTIONS.filter((promotion) => promotion.featured)[0];
   }
-  constructor() { }
 }

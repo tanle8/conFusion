@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     // Since we don't have backend (server-side) to authenticate yet, just show that
-    // we can capture the infor here.
+    // we can capture the information here.
     console.log("User: ", this.user);
     this.dialogRef.close();
   }

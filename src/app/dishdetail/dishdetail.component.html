@@ -19,7 +19,7 @@
             <!-- Create a Material Design Card -->
             <mat-card>
                 <mat-card-title>
-                    <h3>{{ dish.name | uppercase }}</h3>
+                    <h3 *ngIf="dish">{{ dish.name | uppercase }}</h3>
                 </mat-card-title>
                 <img md-card-image src="{{dish.image}}" alt="{{dish.name}}">
                 <mat-card-content>

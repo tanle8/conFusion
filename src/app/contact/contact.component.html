@@ -61,6 +61,7 @@
         <mat-form-field class="half-width">
           <input matInput formControlName="email" placeholder="Email" type="text">
           <mat-error *ngIf="feedbackForm.get('email').hasError('required') && feedbackForm.get('email').touched">Email ID is required</mat-error>
+          <mat-error *ngIf="feedbackForm.get('email').errors.email">Email must be a valid email address</mat-error>
         </mat-form-field>
       </p>
 

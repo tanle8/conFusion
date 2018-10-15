@@ -9,9 +9,7 @@ import { Feedback, ContactType } from "../shared/feedback";
 })
 export class ContactComponent implements OnInit {
 
-  // Declare a variable named feedbackForm with typed FormGroup
   feedbackForm: FormGroup;
-  // Declare a variable named feedback with typed Feedback we created before
   feedback: Feedback;
   contactType = ContactType;
 
@@ -25,10 +23,10 @@ export class ContactComponent implements OnInit {
 
   createForm() {
     this.feedbackForm = this.formbuilder.group({
-      firstname: '',
-      lastname: '',
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
       telnum: 0,
-      email: '',
+      email: ['', Validators.required],
       agree: false,
       contacttype: 'None',
       message: ''
@@ -38,7 +36,15 @@ export class ContactComponent implements OnInit {
   onSubmit() {
     this.feedback = this.feedbackForm.value;
     console.log(this.feedback);
-    this.feedbackForm.reset();
+    this.feedbackForm.reset({
+      firstname: '',
+      lastname: '',
+      telnum: 0,
+      email: '',
+      agree: false,
+      contacttype: 'None',
+      message: ''
+    });
   }
 
 }

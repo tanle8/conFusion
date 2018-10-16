@@ -16,7 +16,14 @@
     <mat-card-content>
       <p>{{dish.description}}</p>
     </mat-card-content>
+
+    <!-- Progress Spinner for dish -->
+    <div [hidden]="dish">
+      <mat-spinner></mat-spinner><h4>Loading ... Please Wait</h4>
+    </div>
+
   </mat-card>
+
 
   <mat-card *ngIf="promotion" fxFlex>
     <mat-card-header>
@@ -29,7 +36,14 @@
     <mat-card-content>
       <p>{{promotion.description}}</p>
     </mat-card-content>
+
+    <!-- Progress Spinner for promotion -->
+    <div [hidden]="promotion">
+      <mat-spinner></mat-spinner><h4>Loading ... Please Wait</h4>
+    </div>
+
   </mat-card>
+
 
   <!-- Leader -->
   <mat-card *ngIf="leader" fxFlex>
@@ -44,11 +58,14 @@
       <p>{{leader.designation}}</p>
       <p>{{leader.description}}</p>
     </mat-card-content>
+
+    <!-- Progress Spinner for leader -->
+    <div [hidden]="leader">
+      <mat-spinner></mat-spinner><h4>Loading ... Please Wait</h4>
+    </div>
+
   </mat-card>
 
-  <!-- Progress Spinner -->
-  <div align="center" [hidden]="leader">
-      <mat-spinner></mat-spinner><h4>Loading ... Please Wait</h4>
-  </div>
+
 
 </div>

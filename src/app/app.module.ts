@@ -17,6 +17,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatSelectModule } from "@angular/material/select";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 import 'hammerjs';
 
@@ -65,6 +66,7 @@ import { LeaderService } from "./services/leader.service";
     MatToolbarModule,
     MatGridListModule,
     MatInputModule,
+    MatProgressSpinnerModule,
     MatSelectModule,
     MatSlideToggleModule,
     ReactiveFormsModule

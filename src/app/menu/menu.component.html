@@ -9,7 +9,7 @@
     </div>
   </div>
 
-  <div fxFlex>
+  <div fxFlex *ngIf="dishes">
     <mat-grid-list cols="2" rowHeight="200px">
       <!-- Grid Tiles -->
       <!-- It also defined a click event here. When user clicks on the the grid tile, -->
@@ -25,6 +25,9 @@
         </mat-grid-tile-footer>
       </mat-grid-tile>
     </mat-grid-list>
+  </div>
+  <div align="center" [hidden]="dishes">
+    <mat-spinner></mat-spinner><h4>Loading ... Please Wait</h4>
   </div>
 
 </div>

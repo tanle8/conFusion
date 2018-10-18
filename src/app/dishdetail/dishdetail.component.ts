@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from "@angular/common";
+import { Params, ActivatedRoute } from "@angular/router";
+import { switchMap } from "rxjs/operators";
 
-import { Dish } from '../shared/dish';
 import { DishService } from "../services/dish.service";
 
-import { Params, ActivatedRoute } from "@angular/router";
-import { Location } from "@angular/common";
-import { switchMap } from "rxjs/operators";
+import { Comment } from "../shared/comment";
+import { Dish } from '../shared/dish';
+import { FormGroup, FormBuilder } from '@angular/forms';
+
 
 @Component({
   selector: 'app-dishdetail',
@@ -20,9 +23,17 @@ export class DishdetailComponent implements OnInit {
   prev: number;
   next: number;
 
+  // Comment form
+  commentForm: FormGroup;
+  comment: Comment;
+
   constructor(private dishservice: DishService,
               private route: ActivatedRoute,
-              private location: Location) { }
+              private location: Location,
+              private formbuilder: FormBuilder) {
+
+                this.createForm();
+               }
 
   ngOnInit() {
     this.dishservice.getDishIds().subscribe(dishIds => this.dishIds = dishIds);
@@ -39,6 +50,20 @@ export class DishdetailComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  createForm(){
+    this.commentForm = this.formbuilder.group({
+      author: '',
+      rating: 5,
+      comment: '',
+    })
+  }
+
+  onSubmit(){
+    this.comment = this.commentForm.value;
+    console.log(this.comment);
+    this.commentForm.reset();
   }
 
 }

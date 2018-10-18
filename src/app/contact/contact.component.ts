@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Feedback, ContactType } from "../shared/feedback";
 
@@ -9,9 +9,12 @@ import { Feedback, ContactType } from "../shared/feedback";
 })
 export class ContactComponent implements OnInit {
 
+  @ViewChild('fform') feedbackFormDirective;
+
   feedbackForm: FormGroup;
   feedback: Feedback;
   contactType = ContactType;
+  // Form errors
   formErrors = {
     'firstname': '',
     'lastname': '',
@@ -49,7 +52,7 @@ export class ContactComponent implements OnInit {
   ngOnInit() {
   }
 
-  createForm() {
+  createForm(): void {
     this.feedbackForm = this.formbuilder.group({
       firstname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
       lastname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
@@ -58,20 +61,18 @@ export class ContactComponent implements OnInit {
       agree: false,
       contacttype: 'None',
       message: ''
-    })
+    });
 
     this.feedbackForm.valueChanges
-        .subscribe((data) => { this.onValueChanged(data) });
+        .subscribe((data) => { this.onValueChanged(data); });
 
     this.onValueChanged();  // (re)set form validation messages
   }
 
-  onValueChanged(data?:any) {
-    // Check if feedback form is not created, return nothing.
+  onValueChanged(data?: any) {
     if (!this.feedbackForm) { return; }
     const form = this.feedbackForm;
     for (const field in this.formErrors) {
-      // If the current property (field) is existed, ...
       if (this.formErrors.hasOwnProperty(field)) {
         // clear previous error message (if any)
         this.formErrors[field] = '';
@@ -100,6 +101,8 @@ export class ContactComponent implements OnInit {
       contacttype: 'None',
       message: ''
     });
+    // Reset form after submitting
+    this.feedbackFormDirective.resetForm();
   }
 
 }

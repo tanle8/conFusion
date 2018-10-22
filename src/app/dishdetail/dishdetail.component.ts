@@ -1,13 +1,13 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { Location } from "@angular/common";
-import { Params, ActivatedRoute } from "@angular/router";
-import { switchMap } from "rxjs/operators";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Location } from '@angular/common';
+import { Params, ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 
-import { DishService } from "../services/dish.service";
+import { DishService } from '../services/dish.service';
 
-import { Comment } from "../shared/comment";
-import { Dish } from "../shared/dish";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Comment } from '../shared/comment';
+import { Dish } from '../shared/dish';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
 @Component({

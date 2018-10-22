@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Dish } from '../shared/dish';      // dish class
 import { DishService } from '../services/dish.service';
 
@@ -13,18 +13,12 @@ export class MenuComponent implements OnInit {
   // but in practice it is prefered to write in the below style for readability.
   dishes: Dish[];
 
-  selectedDish: Dish;
-
-  constructor(private dishService: DishService) { }
+  constructor(private dishService: DishService,
+              @Inject('BaseURL') private BaseURL) { }
 
   ngOnInit() {
     this.dishService.getDishes()
       .subscribe(dishes => this.dishes = dishes);
-  }
-
-  // Implement "onSelect()" method here.
-  onSelect(dish: Dish){
-    this.selectedDish = dish;
   }
 
 }

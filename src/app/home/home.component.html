@@ -17,9 +17,15 @@
       <p>{{dish.description}}</p>
     </mat-card-content>
 
-    <!-- Progress Spinner for dish -->
-    <div [hidden]="dish">
+    <!-- Progress Spinner for dish and error -->
+    <div [hidden]="dish || dishErrMess">
       <mat-spinner></mat-spinner><h4>Loading ... Please Wait</h4>
+    </div>
+
+    <!-- Show error message -->
+    <div *ngIf="dishErrMess">
+      <h2>Error</h2>
+      <h4>{{ dishErrMess }}</h4>
     </div>
 
   </mat-card>

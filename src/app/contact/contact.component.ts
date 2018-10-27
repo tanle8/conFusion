@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Feedback, ContactType } from "../shared/feedback";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Feedback, ContactType } from '../shared/feedback';
+import { FeedbackService } from '../services/feedback.service';
 
 @Component({
   selector: 'app-contact',
@@ -14,6 +15,9 @@ export class ContactComponent implements OnInit {
   feedbackForm: FormGroup;
   feedback: Feedback;
   contactType = ContactType;
+  submitted = null;
+  showForm = true;
+
   // Form errors
   formErrors = {
     'firstname': '',
@@ -44,7 +48,8 @@ export class ContactComponent implements OnInit {
   };
 
 
-  constructor(private formbuilder: FormBuilder) {
+  constructor(private formbuilder: FormBuilder,
+              private feedbackservice: FeedbackService) {
     this.createForm();
 
   }
@@ -92,6 +97,16 @@ export class ContactComponent implements OnInit {
   onSubmit() {
     this.feedback = this.feedbackForm.value;
     console.log(this.feedback);
+    this.showForm = false;
+    this.feedbackservice.submitFeedback(this.feedback)
+      .subscribe(feedback => {
+        this.submitted = feedback;
+        this.feedback = null;
+        setTimeout(() => { this.submitted = null; this.showForm = true; }, 5000);
+      },
+      error => console.log(error.status, error.message));
+
+    // Reset form after submitting
     this.feedbackForm.reset({
       firstname: '',
       lastname: '',
@@ -101,7 +116,6 @@ export class ContactComponent implements OnInit {
       contacttype: 'None',
       message: ''
     });
-    // Reset form after submitting
     this.feedbackFormDirective.resetForm();
   }
 

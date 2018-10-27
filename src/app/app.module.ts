@@ -44,6 +44,7 @@ import { ProcessHTTPMsgService } from './services/process-httpmsg.service';
 
 import 'hammerjs';
 import { baseURL } from './shared/baseurl';
+import { HighlightDirective } from './directives/highlight.directive';
 
 @NgModule({
   // declare component here
@@ -56,7 +57,8 @@ import { baseURL } from './shared/baseurl';
     AboutComponent,
     HomeComponent,
     ContactComponent,
-    LoginComponent
+    LoginComponent,
+    HighlightDirective
   ],
   // declare module here
   imports: [

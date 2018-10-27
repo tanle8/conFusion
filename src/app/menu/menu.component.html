@@ -16,7 +16,7 @@
       <!-- the click event will call on "onSelect" method that will be defined inside -->
       <!-- menu.component.ts file. The dish parameter (which is passed in the "onSelect()" method) -->
       <!-- is exactly the dish is currently selected in this "ngFor" syntax here. -->
-      <mat-grid-tile *ngFor="let dish of dishes" [routerLink]="['/dishdetail', dish.id]">
+      <mat-grid-tile *ngFor="let dish of dishes" [routerLink]="['/dishdetail', dish.id]" appHighlight>
         <!-- Grid Tile Image -->
         <img height="200px" src="{{BaseURL + dish.image}}" alt={{dish.name}}>
         <!-- Grid Tile Footer -->

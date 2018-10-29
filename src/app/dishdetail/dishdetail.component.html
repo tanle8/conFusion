@@ -14,7 +14,7 @@
     </div>
 
     <!-- Menu Card -->
-   	<div fxFlex="40" *ngIf="dish">
+   	<div fxFlex="40" *ngIf="dish" [@visibility]="visibility">
     	<div fxFlex>
             <!-- Create a Material Design Card -->
             <mat-card>
@@ -39,7 +39,7 @@
 
     <!-- T3-1. Included a list of comments about the dish into the dishdetail template using the Angular material list component. -->
     <!-- T3-2. Display the date of the comment using the Angular date pipe. -->
-    <div fxFlex="40" *ngIf="dish">
+    <div fxFlex="40" *ngIf="dish" [@visibility]="visibility">
         <mat-list>
             <h3 matLine>Comments</h3>
             <mat-list-item *ngFor="let curComment of dish.comments">

@@ -8,11 +8,26 @@ import { Comment } from '../shared/comment';
 import { Dish } from '../shared/dish';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+import { trigger, state, style, animate, transition, animation } from '@angular/animations';
+
 
 @Component({
   selector: 'app-dishdetail',
   templateUrl: './dishdetail.component.html',
-  styleUrls: ['./dishdetail.component.scss']
+  styleUrls: ['./dishdetail.component.scss'],
+  animations: [
+    trigger('visibility', [
+      state('shown', style({
+        transform: 'scale(1.0)',
+        opacity: 1
+      })),
+      state('hidden', style({
+        transform: 'scale(0.5)',
+        opacity: 0
+      })),
+      transition('* => *', animate('0.5s ease-in-out'))
+    ])
+  ]
 })
 
 export class DishdetailComponent implements OnInit {
@@ -20,12 +35,12 @@ export class DishdetailComponent implements OnInit {
   @ViewChild('fform') commentFormDirective;
 
   dish: Dish;
-  dishcopy = null;  // Use for returned value
+  dishcopy = null;
   dishIds: number[];
   prev: number;
   next: number;
-  // For store error message
   errMess: string;
+  // Animations
   visibility = 'shown';
 
 
@@ -70,7 +85,8 @@ export class DishdetailComponent implements OnInit {
       this.dishcopy = dish;
       this.setPrevNext(dish.id);
       this.visibility = 'shown';
-    }, errmess => this.errMess = <any>errmess.message);
+    },
+    errmess => this.errMess = <any>errmess.message);
 
   }
 

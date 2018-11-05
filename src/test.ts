@@ -15,6 +15,8 @@ getTestBed().initTestEnvironment(
   platformBrowserDynamicTesting()
 );
 // Then we find all the tests.
-const context = require.context('./', true, /\.spec\.ts$/);
+// - '/\.spec\.ts$/' - Run all the specs files that are there in your project source directory.
+//                     We can run test on specific component (using its specs file) like this: '/menu\.component\.spec\.ts$/'
+const context = require.context('./', true, /menu\.component\.spec\.ts$/);
 // And load the modules.
 context.keys().map(context);

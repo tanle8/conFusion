@@ -23,7 +23,7 @@ export class DishdetailComponent implements OnInit {
   @ViewChild('fform') commentFormDirective;
 
   dish: Dish;
-  dishcopy = null;
+  dishcopy =  null;
   dishIds: number[];
   prev: number;
   next: number;
